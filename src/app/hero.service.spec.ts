@@ -38,6 +38,7 @@ describe('HeroService', () => {
             httpTestingController.verify();
         });
 
+        // Alternative syntax to the above test
         it('should call get with the correct URL', inject(
             [
                 HeroService,
@@ -53,6 +54,7 @@ describe('HeroService', () => {
                 // Assert
                 const req = controller.expectOne('api/heroes/4');
                 req.flush({id: 4, name: 'SuperDude', strength: 100});
+                expect(req.request.method).toBe('GET');
                 controller.verify();
         }));
     });
